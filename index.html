@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 元素展示頁面</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 60px;
+            line-height: 1.6;
+        }
+        
+        section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            scroll-margin-top: 70px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin: 20px 0;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin: 15px 0;
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-align: center;
+        }
+        
+        .nav-menu a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #3498db;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .demo-result {
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        .demo-code {
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        
+        .demo-code pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f5f5f5;
+        }
+        
+        .form-group {
+            margin: 15px 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        button,
+        input[type="submit"],
+        input[type="reset"],
+        input[type="button"] {
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 4px;
+            border: 1px solid #3498db;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover,
+        input[type="button"]:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        img, video, audio {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #e83e8c;
+        }
+        
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-menu">
+        <a href="#text">文字相關</a>
+        <a href="#form">表單元素</a>
+        <a href="#list">清單</a>
+        <a href="#media">多媒體</a>
+        <a href="#table">表格</a>
+        <a href="#links">連結</a>
+    </nav>
+
+    <h1>HTML 元素展示頁面</h1>
+
+    <section id="text">
+        <h2>文字相關標籤</h2>
+        
+        <h3>標題系列</h3>
+        <div class="demo-container">
+            <div class="demo-result">
+                <h1>H1 標題</h1>
+                <h2>H2 標題</h2>
+                <h3>H3 標題</h3>
+                <h4>H4 標題</h4>
+                <h5>H5 標題</h5>
+                <h6>H6 標題</h6>
+            </div>
+            <div class="demo-code">
+                <pre>&lt;h1&gt;H1 標題&lt;/h1&gt;
+&lt;h2&gt;H2 標題&lt;/h2&gt;
+&lt;h3&gt;H3 標題&lt;/h3&gt;
+&lt;h4&gt;H4 標題&lt;/h4&gt;
+&lt;h5&gt;H5 標題&lt;/h5&gt;
+&lt;h6&gt;H6 標題&lt;/h6&gt;</pre>
+            </div>
+        </div>
+
+        <h3>段落和換行</h3>
+        <div class="demo-container">
+            <div class="demo-result">
+                <p>這是第一個段落文字。</p>
+                <p>這是第二個段落文字。<br>這是強制換行的文字。</p>
+            </div>
+            <div class="demo-code">
+                <pre>&lt;p&gt;這是第一個段落文字。&lt;/p&gt;
+&lt;p&gt;這是第二個段落文字。&lt;br&gt;這是強制換行的文字。&lt;/p&gt;</pre>
+            </div>
+        </div>
+
+        <h3>文字格式</h3>
+        <div class="demo-container">
+            <div class="demo-result">
+                <p><strong>粗體文字 (strong)</strong></p>
+                <p><em>斜體文字 (em)</em></p>
+                <p><u>底線文字</u></p>
+                <p><mark>標記文字</mark></p>
+                <p><del>刪除線文字</del></p>
+                <p>這是<sup>上標</sup>和<sub>下標</sub></p>
+                <p><code>程式碼文字</code></p>
+            </div>
+            <div class="demo-code">
+                <pre>&lt;p&gt;&lt;strong&gt;粗體文字 (strong)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;斜體文字 (em)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;u&gt;底線文字&lt;/u&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;標記文字&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;刪除線文字&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;這是&lt;sup&gt;上標&lt;/sup&gt;和&lt;sub&gt;下標&lt;/sub&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;程式碼文字&lt;/code&gt;&lt;/p&gt;</pre>
+            </div>
+        </div>
+    </section>
+
+    <section id="list">
+        <h2>清單</h2>
+        <div class="demo-container">
+            <div class="demo-result">
+                <h3>無序清單</h3>
+                <ul>
+                    <li>項目一</li>
+                    <li>項目二</li>
+                    <li>項目三</li>
+                </ul>
+
+                <h3>有序清單</h3>
+                <ol>
+                    <li>第一項</li>
+                    <li>第二項</li>
+                    <li>第三項</li>
+                </ol>
+
+                <h3>定義清單</h3>
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>超文本標記語言</dd>
+                    <dt>CSS</dt>
+                    <dd>層疊樣式表</dd>
+                </dl>
+            </div>
+            <div class="demo-code">
+                <pre>&lt;ul&gt;
+  &lt;li&gt;項目一&lt;/li&gt;
+  &lt;li&gt;項目二&lt;/li&gt;
+  &lt;li&gt;項目三&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;第一項&lt;/li&gt;
+  &lt;li&gt;第二項&lt;/li&gt;
+  &lt;li&gt;第三項&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;超文本標記語言&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;層疊樣式表&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+            </div>
+        </div>
+    </section>
+
+    <section id="form">
+        <h2>表單元素</h2>
+        
+        <h3>文字輸入</h3>
+        <div class="demo-container">
+            <div class="demo-result">
+                <form>
+                    <div class="form-group">
+                        <label for="text1">一般文字：</label>
+                        <input type="text" id="text1" placeholder="請輸入文字">
+                    </div>
+                    <div class="form-group">
+                        <label for="password1">密碼：</label>
+                        <input type="password" id="password1" placeholder="請輸入密碼">
+                    </div>
+                    <div class="form-group">
+                        <label for="email1">Email：</label>
+                        <input type="email" id="email1" placeholder="example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="textarea1">多行文字：</label>
+                        <textarea id="textarea1" rows="4" placeholder="請輸入內容..."></textarea>
+                    </div>
+                    <button type="submit">送出</button>
+                    <button type="reset">重置</button>
+                </form>
+            </div>
+            <div class="demo-code">
+                <pre>&lt;form&gt;
+  &lt;div class="form-group"&gt;
+      &lt;label for="text1"&gt;一般文字：&lt;/label&gt;
+      &lt;input type="text" id="text1" placeholder="請輸入文字"&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+      &lt;label for="password1"&gt;密碼：&lt;/label&gt;
+      &lt;input type="password" id="password1" placeholder="請輸入密碼"&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+      &lt;label for="email1"&gt;Email：&lt;/label&gt;
+      &lt;input type="email" id="email1" placeholder="example@email.com"&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+      &lt;label for="textarea1"&gt;多行文字：&lt;/label&gt;
+      &lt;textarea id="textarea1" rows="4" placeholder="請輸入內容..."&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;button type="submit"&gt;送出&lt;/button&gt;
+  &lt;button type="reset"&gt;重置&lt;/button&gt;
+&lt;/form&gt;</pre>
+            </div>
+        </div>
+
+        <h3>選擇元素</h3>
+        <div class="demo-container">
+            <div class="demo-result">
+                <div class="form-group">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">複選框</label>
+                                </div>
+                <div class="form-group">
+                    <input type="radio" name="radio1" id="radio1">
+                    <label for="radio1">單選按鈕 1</label>
+                    <input type="radio" name="radio1" id="radio2">
+                    <label for="radio2">單選按鈕 2</label>
+                </div>
+                <div class="form-group">
+                    <label for="select1">下拉選單：</label>
+                    <select id="select1">
+                        <option value="">請選擇</option>
+                        <option value="1">選項一</option>
+                        <option value="2">選項二</option>
+                        <option value="3">選項三</option>
+                    </select>
+                </div>
+            </div>
+            <div class="demo-code">
+                <pre>&lt;div class="form-group"&gt;
+  &lt;input type="checkbox" id="check1"&gt;
+  &lt;label for="check1"&gt;複選框&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-group"&gt;
+  &lt;input type="radio" name="radio1" id="radio1"&gt;
+  &lt;label for="radio1"&gt;單選按鈕 1&lt;/label&gt;
+  &lt;input type="radio" name="radio1" id="radio2"&gt;
+  &lt;label for="radio2"&gt;單選按鈕 2&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-group"&gt;
+  &lt;label for="select1"&gt;下拉選單：&lt;/label&gt;
+  &lt;select id="select1"&gt;
+      &lt;option value=""&gt;請選擇&lt;/option&gt;
+      &lt;option value="1"&gt;選項一&lt;/option&gt;
+      &lt;option value="2"&gt;選項二&lt;/option&gt;
+      &lt;option value="3"&gt;選項三&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</pre>
+            </div>
+        </div>
+    </section>
+
+    <section id="media">
+        <h2>多媒體</h2>
+        <div class="demo-container">
+            <div class="demo-result">
+                <h3>圖片</h3>
+                <img src="https://via.placeholder.com/300x200" alt="示例圖片">
+
+                <h3>影片</h3>
+                <video width="400" controls>
+                    <source src="movie.mp4" type="video/mp4">
+                    您的瀏覽器不支援影片標籤。
+                </video>
+
+                <h3>音訊</h3>
+                <audio controls>
+                    <source src="audio.mp3" type="audio/mpeg">
+                    您的瀏覽器不支援音訊標籤。
+                </audio>
+            </div>
+            <div class="demo-code">
+                <pre>&lt;img src="https://via.placeholder.com/300x200" alt="示例圖片"&gt;
+
+&lt;video width="400" controls&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  您的瀏覽器不支援影片標籤。
+&lt;/video&gt;
+
+&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+  您的瀏覽器不支援音訊標籤。
+&lt;/audio&gt;</pre>
+            </div>
+        </div>
+    </section>
+
+    <section id="table">
+        <h2>表格</h2>
+        <div class="demo-container">
+            <div class="demo-result">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>標題 1</th>
+                            <th>標題 2</th>
+                            <th>標題 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>單元格 1</td>
+                            <td>單元格 2</td>
+                            <td>單元格 3</td>
+                        </tr>
+                        <tr>
+                            <td>單元格 4</td>
+                            <td>單元格 5</td>
+                            <td>單元格 6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="demo-code">
+                <pre>&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;標題 1&lt;/th&gt;
+          &lt;th&gt;標題 2&lt;/th&gt;
+          &lt;th&gt;標題 3&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;單元格 1&lt;/td&gt;
+          &lt;td&gt;單元格 2&lt;/td&gt;
+          &lt;td&gt;單元格 3&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;單元格 4&lt;/td&gt;
+          &lt;td&gt;單元格 5&lt;/td&gt;
+          &lt;td&gt;單元格 6&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+            </div>
+        </div>
+    </section>
+
+    <section id="links">
+        <h2>連結</h2>
+        <div class="demo-container">
+            <div class="demo-result">
+                <p><a href="https://www.example.com">一般連結</a></p>
+                <p><a href="mailto:example@email.com">郵件連結</a></p>
+                <p><a href="tel:+886912345678">電話連結</a></p>
+                <p><a href="#top">回到頂部</a></p>
+            </div>
+            <div class="demo-code">
+                <pre>&lt;a href="https://www.example.com"&gt;一般連結&lt;/a&gt;
+
+&lt;a href="mailto:example@email.com"&gt;郵件連結&lt;/a&gt;
+
+&lt;a href="tel:+886912345678"&gt;電話連結&lt;/a&gt;
+
+&lt;a href="#top"&gt;回到頂部&lt;/a&gt;</pre>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 平滑滾動效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
