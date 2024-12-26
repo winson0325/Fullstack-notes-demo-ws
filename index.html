@@ -1,1 +1,132 @@
-
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端學習筆記</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: #ecf0f1;
+            margin-top: 0.5rem;
+        }
+        
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .card h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        .card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+        
+        @media (max-width: 600px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                padding: 1rem 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>前端學習筆記</h1>
+        <div class="subtitle">HTML & CSS 學習資源</div>
+    </header>
+    
+    <main>
+        <div class="cards-container">
+            <a href="HTMLNote.html" class="card">
+                <div class="card-icon">📝</div>
+                <h2>HTML 筆記</h2>
+                <p>完整的 HTML 教學筆記，包含基礎語法、標籤使用說明和實例展示。</p>
+            </a>
+            
+            <a href="CSSPseudoDemo.html" class="card">
+                <div class="card-icon">🎨</div>
+                <h2>CSS 偽類展示</h2>
+                <p>互動式的 CSS 偽類展示頁面，包含所有常用偽類的實際效果和代碼示例。</p>
+            </a>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2024 前端學習筆記 | GitHub Pages</p>
+    </footer>
+</body>
+</html>
