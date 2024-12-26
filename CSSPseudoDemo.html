@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>終極 CSS 偽類展示</title>
+    <style>
+      html {
+        scroll-behavior: smooth;
+    }
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .demo-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fff;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 200px;
+        }
+        
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        /* 基本狀態偽類 */
+        .hover-demo:hover {
+            background-color: yellow;
+            transition: background-color 0.3s;
+        }
+        
+        .active-demo:active {
+            background-color: red;
+        }
+        
+        .focus-demo:focus {
+            outline: 3px solid blue;
+        }
+        
+        /* 空元素示範 */
+        .empty-demo div {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px 0;
+            min-height: 20px;
+        }
+        
+        .empty-demo div:empty {
+            display: none;
+        }
+        
+        /* 否定選擇器示範 */
+        .not-demo p {
+            color: gray;
+        }
+        
+        .not-demo p.special {
+            color: black;
+            font-weight: bold;
+        }
+        
+        /* 目標元素示範 */
+        .target-demo {
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .target-demo:target {
+            background: yellow;
+        }
+        
+        /* 表單相關偽類 */
+        .form-demo input,
+        .validation-demo input {
+            margin: 5px 0;
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-demo input:disabled {
+            background-color: #f0f0f0;
+            cursor: not-allowed;
+        }
+        
+        .form-demo input:checked + label {
+            color: green;
+            font-weight: bold;
+        }
+        
+        .validation-demo input:valid {
+            border-color: green;
+        }
+        
+        .validation-demo input:invalid {
+            border-color: red;
+        }
+        
+        .validation-demo input:required {
+            background-color: #fff3f3;
+        }
+        
+        /* 結構性偽類 */
+        .list-demo li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .list-demo li:first-child {
+            font-weight: bold;
+            background-color: #f8f8f8;
+        }
+        
+        .list-demo li:last-child {
+            border-bottom: none;
+            font-style: italic;
+        }
+        
+        .list-demo li:nth-child(even) {
+            background: #f0f0f0;
+        }
+        
+        .list-demo li:nth-child(odd) {
+            background: #ffffff;
+        }
+        
+        /* 連結狀態偽類 */
+        .link-demo a:link {
+            color: blue;
+        }
+        
+        .link-demo a:visited {
+            color: purple;
+        }
+        
+        .link-demo a:hover {
+            text-decoration: none;
+        }
+        
+        /* 選擇偽類 */
+        .selection-demo::selection {
+            background-color: yellow;
+            color: black;
+        }
+        
+        button, input[type="button"] {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover, input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        
+        .example-box {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-menu">
+        <h3>目錄</h3>
+        <ul>
+            <li><a href="#basic">基本狀態偽類</a></li>
+            <li><a href="#empty">空元素</a></li>
+            <li><a href="#not">否定選擇器</a></li>
+            <li><a href="#target">目標元素</a></li>
+            <li><a href="#form">表單相關</a></li>
+            <li><a href="#validation">表單驗證</a></li>
+            <li><a href="#structure">結構性偽類</a></li>
+            <li><a href="#link">連結狀態</a></li>
+            <li><a href="#selection">選擇偽類</a></li>
+        </ul>
+    </nav>
+
+    <h1>終極 CSS 偽類展示</h1>
+    
+    <!-- 基本狀態偽類 -->
+    <div id="basic" class="demo-section">
+        <h2>基本狀態偽類</h2>
+        
+        <h3>:hover（滑鼠懸停）</h3>
+        <button class="hover-demo">滑鼠移到我上面試試</button>
+        <pre>
+.hover-demo:hover {
+    background-color: yellow;
+}</pre>
+        
+        <h3>:active（點擊時）</h3>
+        <button class="active-demo">點擊我試試</button>
+        <pre>
+.active-demo:active {
+    background-color: red;
+}</pre>
+        
+        <h3>:focus（獲得焦點）</h3>
+        <input type="text" class="focus-demo" placeholder="點擊我試試">
+        <pre>
+.focus-demo:focus {
+    outline: 3px solid blue;
+}</pre>
+    </div>
+    
+    <!-- 空元素示範 -->
+    <div id="empty" class="demo-section">
+        <h2>空元素 :empty</h2>
+        <div class="empty-demo">
+            <div>有內容的 div</div>
+            <div></div>
+            <div>   </div>
+            <p>空的 div 被隱藏了</p>
+        </div>
+        <pre>
+div:empty {
+    display: none;
+}</pre>
+    </div>
+    
+    <!-- 否定選擇器示範 -->
+    <div id="not" class="demo-section">
+        <h2>否定選擇器 :not()</h2>
+        <div class="not-demo">
+            <p>這是普通段落</p>
+            <p class="special">這是特殊段落</p>
+            <p>這也是普通段落</p>
+        </div>
+        <pre>
+p:not(.special) {
+    color: gray;
+}</pre>
+    </div>
+    
+    <!-- 目標元素示範 -->
+    <div id="target" class="demo-section">
+        <h2>目標元素 :target</h2>
+        <a href="#demo-target">點擊這裡</a>
+        <div id="demo-target" class="target-demo">
+            我是目標元素（點擊上面的連結看效果）
+        </div>
+        <pre>
+:target {
+    background: yellow;
+}</pre>
+    </div>
+    
+    <!-- 表單相關偽類 -->
+    <div id="form" class="demo-section form-demo">
+        <h2>表單相關偽類</h2>
+        
+        <h3>:disabled（禁用狀態）</h3>
+        <input type="text" disabled value="我被禁用了">
+        <pre>
+input:disabled {
+    background-color: #f0f0f0;
+}</pre>
+        
+        <h3>:checked（選中狀態）</h3>
+        <input type="checkbox" id="check1">
+        <label for="check1">選中我看看</label>
+        <pre>
+input:checked + label {
+    color: green;
+}</pre>
+    </div>
+    
+    <!-- 表單驗證示範 -->
+    <div id="validation" class="demo-section">
+        <h2>表單驗證偽類</h2>
+        <div class="validation-demo">
+            <input type="email" placeholder="輸入電子郵件" required>
+            <input type="text" pattern="[A-Za-z]{3}" placeholder="輸入三個字母">
+        </div>
+        <pre>
+input:valid {
+    border-color: green;
+}
+
+input:invalid {
+    border-color: red;
+}
+
+input:required {
+    background-color: #fff3f3;
+}</pre>
+    </div>
+    
+    <!-- 結構性偽類 -->
+    <div id="structure" class="demo-section">
+        <h2>結構性偽類</h2>
+        <ul class="list-demo">
+            <li>第一項 (:first-child)</li>
+            <li>第二項 (even)</li>
+            <li>第三項</li>
+            <li>第四項 (even)</li>
+            <li>第五項</li>
+            <li>最後一項 (:last-child)</li>
+        </ul>
+        <pre>
+li:first-child {
+    font-weight: bold;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+li:nth-child(even) {
+    background: #f0f0f0;
+}
+
+li:nth-child(odd) {
+    background: #ffffff;
+}</pre>
+    </div>
+    
+    <!-- 連結狀態偽類 -->
+    <div id="link" class="demo-section link-demo">
+        <h2>連結狀態偽類</h2>
+        <a href="https://www.example.com">未訪問的連結</a><br>
+        <a href="https://www.google.com">已訪問的連結</a>
+        <pre>
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    text-decoration: none;
+}</pre>
+    </div>
+    
+    <!-- 選擇偽類 -->
+    <div id="selection" class="demo-section selection-demo">
+        <h2>選擇偽類 ::selection</h2>
+        <p>試試選取這段文字！文字被選中時會變成黃底黑字。</p>
+        <pre>
+.selection-demo::selection {
+    background-color: yellow;
+    color: black;
+}</pre>
+    </div>
+</body>
+</html>
