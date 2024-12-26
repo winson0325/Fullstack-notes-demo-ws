@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERN Stack 技術棧指南</title>
+    <style>
+        :root {
+            --mongodb-green: #00ED64;
+            --express-gray: #333333;
+            --react-blue: #61DAFB;
+            --node-green: #43853d;
+            --code-bg: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #373737 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tech-logo {
+            width: 80px;
+            height: 80px;
+            padding: 10px;
+            background: white;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .tech-logo:hover {
+            transform: translateY(-5px);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: #34495e;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .tech-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .mongodb { border-top: 4px solid var(--mongodb-green); }
+        .express { border-top: 4px solid var(--express-gray); }
+        .react { border-top: 4px solid var(--react-blue); }
+        .node { border-top: 4px solid var(--node-green); }
+        
+        code {
+            background: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .architecture-diagram {
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            display: block;
+        }
+        
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .feature-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+        
+        @media (max-width: 768px) {
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-container {
+                flex-wrap: wrap;
+            }
+            
+            .tech-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>MERN Stack 技術棧指南</h1>
+            <p>MongoDB + Express.js + React.js + Node.js</p>
+            <div class="logo-container">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="tech-logo">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" class="tech-logo">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React.js" class="tech-logo">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="tech-logo">
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="section">
+            <h2>什麼是 MERN Stack？</h2>
+            <p>MERN Stack 是一個由四個主要技術組成的全端 JavaScript 技術棧：</p>
+            <div class="tech-grid">
+                <div class="tech-card mongodb">
+                    <h3>MongoDB</h3>
+                    <p>NoSQL 資料庫，使用 JSON 格式儲存資料，具有高度擴展性和靈活性。</p>
+                    <ul>
+                        <li>文件導向資料庫</li>
+                        <li>支援複雜查詢</li>
+                        <li>水平擴展能力強</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card express">
+                    <h3>Express.js</h3>
+                    <p>Node.js 的 Web 應用框架，用於建構 API 和處理 HTTP 請求。</p>
+                    <ul>
+                        <li>輕量級框架</li>
+                        <li>強大的路由系統</li>
+                        <li>豐富的中間件</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card react">
+                    <h3>React.js</h3>
+                    <p>用於建構使用者介面的 JavaScript 函式庫，由 Facebook 開發。</p>
+                    <ul>
+                        <li>組件式開發</li>
+                        <li>虛擬 DOM</li>
+                        <li>單向資料流</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card node">
+                    <h3>Node.js</h3>
+                    <p>基於 Chrome V8 引擎的 JavaScript 執行環境。</p>
+                    <ul>
+                        <li>非阻塞 I/O</li>
+                        <li>事件驅動</li>
+                        <li>豐富的套件生態系統</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>架構概觀</h2>
+            <p>MERN Stack 採用三層架構：</p>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>前端層</h3>
+                    <p>React.js 負責使用者介面</p>
+                </div>
+                <div class="feature-item">
+                    <h3>應用層</h3>
+                    <p>Express.js + Node.js 處理業務邏輯</p>
+                </div>
+                <div class="feature-item">
+                    <h3>資料層</h3>
+                    <p>MongoDB 負責資料儲存</p>
+                </div>
+            </div>
+            
+            <h3>基本工作流程</h3>
+            <pre>
+Client (React) → API Requests → Server (Express/Node) → Database (MongoDB)
+↑                                                                      ↓
+JSON Response ← Server Processing ← Database Operations ← Database Query</pre>
+        </section>
+        
+        <section class="section">
+            <h2>開發環境設置</h2>
+            <h3>必要工具</h3>
+            <ul>
+                <li>Node.js 和 npm（Node Package Manager）</li>
+                <li>MongoDB Community Server</li>
+                <li>代碼編輯器（如 VS Code）</li>
+            </ul>
+            
+            <h3>基本專案結構</h3>
+            <pre>
+mern-project/
+├── client/                 # React 前端專案
+│   ├── public/
+│   ├── src/
+│   └── package.json
+├── server/                 # Node.js/Express 後端專案
+│   ├── models/            # MongoDB 模型
+│   ├── routes/            # API 路由
+│   ├── controllers/       # 業務邏輯
+│   └── server.js
+└── package.json</pre>
+        </section>
+        
+        <section class="section">
+            <h2>常用指令</h2>
+            <h3>建立新專案</h3>
+            <pre>
+# 建立 React 專案
+npx create-react-app client
+
+# 建立 Express 專案
+mkdir server
+cd server
+npm init -y
+npm install express mongoose cors dotenv</pre>
+            
+            <h3>啟動開發環境</h3>
+            <pre>
+# 前端開發伺服器
+cd client
+npm start
+
+# 後端伺服器
+cd server
+npm run dev</pre>
+        </section>
+        
+        <section class="section">
+            <h2>最佳實踐</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>前端</h3>
+                    <ul>
+                        <li>使用 React Hooks</li>
+                        <li>實作狀態管理（Redux/Context）</li>
+                        <li>組件重用</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <h3>後端</h3>
+                    <ul>
+                        <li>RESTful API 設計</li>
+                        <li>適當的錯誤處理</li>
+                        <li>資料驗證</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <h3>資料庫</h3>
+                    <ul>
+                        <li>適當的索引設計</li>
+                        <li>資料模型正規化</li>
+                        <li>查詢優化</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <h3>安全性</h3>
+                    <ul>
+                        <li>使用 JWT 認證</li>
+                        <li>資料加密</li>
+                        <li>輸入驗證</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>常見問題與解決方案</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>跨域問題</h3>
+                    <p>使用 cors 中間件處理</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h3>狀態管理</h3>
+                    <p>考慮使用 Redux 或 Context API</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h3>效能優化</h3>
+                    <p>實作快取和代碼分割</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h3>部署</h3>
+                    <p>使用 Docker 容器化應用</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
